@@ -42,13 +42,5 @@
   "packageManager": "yarn@3.2.4",
   "dependencies": {
     "@deltachat/jsonrpc-client": "1.97.0"
-  },
-  "optionalDependencies": {
-    "@deltachat/napi-jsonrpc-win32-x64-msvc": "0.97.0",
-    "@deltachat/napi-jsonrpc-darwin-x64": "0.97.0",
-    "@deltachat/napi-jsonrpc-linux-x64-gnu": "0.97.0",
-    "@deltachat/napi-jsonrpc-darwin-arm64": "0.97.0",
-    "@deltachat/napi-jsonrpc-linux-arm-gnueabihf": "0.97.0",
-    "@deltachat/napi-jsonrpc-win32-ia32-msvc": "0.97.0"
   }
 }
