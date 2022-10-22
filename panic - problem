@@ -1,0 +1,40 @@
+thread 'tokio-runtime-worker' panicked at 'index out of bounds: the len is 10 but the index is 12', /Users/bb/.cargo/registry/src/github.com-1ecc6299db9ec823/concurrent-queue-1.2.4/src/bounded.rs:160:25
+stack backtrace:
+   0: _rust_begin_unwind
+   1: core::panicking::panic_fmt
+   2: core::panicking::panic_bounds_check
+   3: <core::panic::unwind_safe::AssertUnwindSafe<F> as core::ops::function::FnOnce<()>>::call_once
+   4: tokio::runtime::task::raw::poll
+   5: tokio::runtime::scheduler::multi_thread::worker::Context::run_task
+   6: tokio::runtime::scheduler::multi_thread::worker::run
+   7: tokio::runtime::task::raw::poll
+note: Some details are omitted, run with `RUST_BACKTRACE=full` for a verbose backtrace.
+
+
+while running tests, that appears sometimes, full version:
+  ✔ jsonrpc low_level smoketest 2
+thread 'tokio-runtime-worker' panicked at 'index out of bounds: the len is 10 but the index is 13', /Users/bb/.cargo/registry/src/github.com-1ecc6299db9ec823/concurrent-queue-1.2.4/src/bounded.rs:160:25
+stack backtrace:
+   0:        0x119b2b33c - <std::sys_common::backtrace::_print::DisplayBacktrace as core::fmt::Display>::fmt::h1543c132bc4e188c
+   1:        0x1193eef54 - core::fmt::write::hda8e8eb84b49cbfc
+   2:        0x119b0b72c - std::io::Write::write_fmt::hb84c8996aec7120c
+   3:        0x119b2f57c - std::panicking::default_hook::{{closure}}::hdf06011cb093de6a
+   4:        0x119b30410 - std::panicking::rust_panic_with_hook::h053d4067a63a6fcb
+   5:        0x119b2ffc8 - std::panicking::begin_panic_handler::{{closure}}::hea9e6c546a23e8ff
+   6:        0x119b2ff40 - std::sys_common::backtrace::__rust_end_short_backtrace::hd64e012cf32134c6
+   7:        0x119b2ff0c - _rust_begin_unwind
+   8:        0x119df93a4 - core::panicking::panic_fmt::hbfde5533e1c0592e
+   9:        0x119df93f4 - core::panicking::panic_bounds_check::h54a3444ed599ccd1
+  10:        0x11986a72c - <core::panic::unwind_safe::AssertUnwindSafe<F> as core::ops::function::FnOnce<()>>::call_once::h51f9788924ebe0f8
+  11:        0x11988e538 - tokio::runtime::task::raw::poll::h180303ea0cbcdfc5
+  12:        0x119b481c4 - tokio::runtime::scheduler::multi_thread::worker::Context::run_task::h37698c68da1d734a
+  13:        0x119b466ac - tokio::runtime::scheduler::multi_thread::worker::run::h2860266ab37f0904
+  14:        0x119b40efc - tokio::runtime::task::raw::poll::ha7d961384b511704
+  15:        0x119b4c390 - std::sys_common::backtrace::__rust_begin_short_backtrace::hafbf64430c2d9664
+  16:        0x119b4e390 - core::ops::function::FnOnce::call_once{{vtable.shim}}::ha13e503b359a5e9e
+  17:        0x119b315d8 - std::sys::unix::thread::Thread::new::thread_start::h403ab16d5f453cd4
+  18:        0x19d71826c - __pthread_deallocate
+
+
+maybe there is a race in droping the object?
+maybe the event emitter loop needs to be aborted?

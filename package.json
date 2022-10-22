@@ -1,0 +1,54 @@
+{
+  "name": "@deltachat/napi-jsonrpc",
+  "version": "0.97.0",
+  "main": "index.mjs",
+  "types": "index.mts",
+  "napi": {
+    "name": "napi-jsonrpc",
+    "triples": {
+      "additional": [
+        "aarch64-apple-darwin",
+        "armv7-unknown-linux-gnueabihf",
+        "i686-pc-windows-msvc"
+      ]
+    }
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "@napi-rs/cli": "^2.12.0",
+    "ava": "^4.3.3",
+    "npm-run-all": "^4.1.5",
+    "typescript": "^4.8.4"
+  },
+  "ava": {
+    "timeout": "3m"
+  },
+  "engines": {
+    "node": ">= 10"
+  },
+  "scripts": {
+    "artifacts": "napi artifacts",
+    "build": "run-s build:napi build:ts",
+    "build:debug": "run-s build:napi:debug build:ts",
+    "build:napi": "napi build --platform --release --js bindings.js --dts bindings.d.ts",
+    "build:napi:debug": "napi build --platform --js bindings.js --dts bindings.d.ts",
+    "build:ts": "tsc",
+    "prepublishOnly": "napi prepublish -t npm",
+    "test": "ava",
+    "version": "napi version",
+    "example": "run-s build example:run",
+    "example:run": "node examples/echo-bot.mjs"
+  },
+  "packageManager": "yarn@3.2.4",
+  "dependencies": {
+    "@deltachat/jsonrpc-client": "1.97.0"
+  },
+  "optionalDependencies": {
+    "@deltachat/napi-jsonrpc-win32-x64-msvc": "0.97.0",
+    "@deltachat/napi-jsonrpc-darwin-x64": "0.97.0",
+    "@deltachat/napi-jsonrpc-linux-x64-gnu": "0.97.0",
+    "@deltachat/napi-jsonrpc-darwin-arm64": "0.97.0",
+    "@deltachat/napi-jsonrpc-linux-arm-gnueabihf": "0.97.0",
+    "@deltachat/napi-jsonrpc-win32-ia32-msvc": "0.97.0"
+  }
+}
