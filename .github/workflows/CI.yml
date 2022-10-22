@@ -270,6 +270,8 @@ jobs:
           key: npm-cache-ubuntu-latest-publish
       - name: Install dependencies
         run: yarn install
+      - name: build typescript
+        run: yarn build:ts
       - name: Download all artifacts
         uses: actions/download-artifact@v3
         with:

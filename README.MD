@@ -73,7 +73,7 @@ yarn
 ### Build it
 
 ```sh
-yarn build
+yarn make
 ```
 
 ### Update deltachat-core
