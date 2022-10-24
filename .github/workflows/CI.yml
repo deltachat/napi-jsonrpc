@@ -80,11 +80,9 @@ jobs:
           override: true
           toolchain: stable
           target: ${{ matrix.settings.target }}
-      - name: Setup perl
-        if: ${{ matrix.settings.host == 'windows-latest' }}
-        uses: shogo82148/actions-setup-perl@v1
-        with:
-          distribution: strawberry
+      - name: Use strawberry perl
+        if: startsWith(matrix.os, 'windows')
+        run: echo OPENSSL_SRC_PERL=C:/Strawberry/perl/bin/perl >> $GITHUB_ENV
       - name: Cache cargo
         uses: actions/cache@v3
         with:
@@ -118,12 +116,6 @@ jobs:
           check-latest: true
           cache: yarn
           architecture: x86
-      - name: check perl
-        if: ${{ matrix.settings.host == 'windows-latest' }}
-        run: |
-         where perl
-         gcm perl
-         perl --version
       - name: Build in docker
         uses: addnab/docker-run-action@v3
         if: ${{ matrix.settings.docker }}
