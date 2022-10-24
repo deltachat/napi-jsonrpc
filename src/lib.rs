@@ -66,7 +66,7 @@ impl AccountManager {
 
   #[napi]
   pub async fn start_io(&self) -> () {
-    self.accounts.write().await.stop_io().await;
+    self.accounts.write().await.start_io().await;
   }
 
   #[napi]
