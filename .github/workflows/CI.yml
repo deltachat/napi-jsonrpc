@@ -35,6 +35,7 @@ jobs:
           - host: windows-latest
             build: |
               OPENSSL_SRC_PERL=C:/Strawberry/perl/bin/perl yarn build --target i686-pc-windows-msvc
+              yarn build:ts
               yarn test
             target: i686-pc-windows-msvc
           - host: ubuntu-latest
@@ -247,6 +248,7 @@ jobs:
           options: '-v ${{ github.workspace }}:/build -w /build'
           run: |
             set -e
+            yarn build:ts
             yarn test
             ls -la
   publish:
