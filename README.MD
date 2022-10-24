@@ -91,3 +91,12 @@ deltachat-jsonrpc = { git = "https://github.com/deltachat/deltachat-core-rust/",
 ```sh
 yarn add @deltachat/jsonrpc-client@1.97.0
 ```
+
+### Publish new version:
+
+The ci does this automatically, you just need to run.
+```
+# npm version [<newversion> | major | minor | patch | premajor | preminor | prepatch | prerelease | from-git]
+npm version patch
+git push --follow-tags
+```
