@@ -81,7 +81,7 @@ jobs:
           toolchain: stable
           target: ${{ matrix.settings.target }}
       - name: Setup perl
-        if: ${{ matrix.settings.host == windows }}
+        if: ${{ '$RUNNER_OS' == 'Windows' }}
         uses: shogo82148/actions-setup-perl@v1
         with:
           distribution: strawberry
