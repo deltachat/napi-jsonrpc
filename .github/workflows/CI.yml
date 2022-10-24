@@ -80,6 +80,11 @@ jobs:
           override: true
           toolchain: stable
           target: ${{ matrix.settings.target }}
+      - name: Setup perl
+        if: ${{ matrix.settings.host == windows }}
+        uses: shogo82148/actions-setup-perl@v1
+        with:
+          distribution: strawberry
       - name: Cache cargo
         uses: actions/cache@v3
         with:
