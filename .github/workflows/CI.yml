@@ -81,7 +81,7 @@ jobs:
           toolchain: stable
           target: ${{ matrix.settings.target }}
       - name: Use strawberry perl
-        if: startsWith(matrix.os, 'windows')
+        if: startsWith(matrix.settings.host, 'windows')
         run: echo OPENSSL_SRC_PERL=C:/Strawberry/perl/bin/perl >> $GITHUB_ENV
       - name: Cache cargo
         uses: actions/cache@v3
