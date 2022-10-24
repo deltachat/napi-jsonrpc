@@ -29,11 +29,12 @@ jobs:
               yarn build
               strip -x *.node
           - host: windows-latest
-            build: yarn build
+            build: |
+              OPENSSL_SRC_PERL=C:/Strawberry/perl/bin/perl yarn build
             target: x86_64-pc-windows-msvc
           - host: windows-latest
             build: |
-              yarn build --target i686-pc-windows-msvc
+              OPENSSL_SRC_PERL=C:/Strawberry/perl/bin/perl yarn build --target i686-pc-windows-msvc
               yarn test
             target: i686-pc-windows-msvc
           - host: ubuntu-latest
@@ -80,9 +81,6 @@ jobs:
           override: true
           toolchain: stable
           target: ${{ matrix.settings.target }}
-      - name: Use strawberry perl
-        if: ${{ matrix.settings.host == 'windows-latest' }}
-        run: echo OPENSSL_SRC_PERL=C:/Strawberry/perl/bin/perl >> $GITHUB_ENV
       - name: Cache cargo
         uses: actions/cache@v3
         with:
