@@ -1,6 +1,6 @@
 {
   "name": "@deltachat/napi-jsonrpc-linux-x64-gnu",
-  "version": "0.98.0",
+  "version": "0.98.1",
   "os": [
     "linux"
   ],
