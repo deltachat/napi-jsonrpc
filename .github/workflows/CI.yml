@@ -170,6 +170,8 @@ jobs:
       - name: List packages
         run: ls -R .
         shell: bash
+      - name: yarn build typescript
+        run: yarn build:ts
       - name: Test bindings
         run: yarn test
   test-linux-x64-gnu-binding:
@@ -199,6 +201,8 @@ jobs:
           key: npm-cache-test-linux-x64-gnu-${{ matrix.node }}
       - name: Install dependencies
         run: yarn install
+      - name: yarn build typescript
+        run: yarn build:ts
       - name: Download artifacts
         uses: actions/download-artifact@v3
         with:
