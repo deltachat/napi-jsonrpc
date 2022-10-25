@@ -16,7 +16,15 @@ The main differences to deltachat-node are:
 
 ## Usage
 
+- If you use typescript, then you need to use a typescript version newer than `4.7`.
+- Nodejs version `14` is the lowest supported node version by this package, but we recommend using `16` or newer.
+- This is an ESM module.
+
 ### basic usage
+
+```sh
+npm i @deltachat/napi-jsonrpc
+```
 
 ```ts
 import { openDeltaChatInstance, T } from "@deltachat/napi-jsonrpc";

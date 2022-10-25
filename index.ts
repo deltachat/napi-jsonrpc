@@ -1,8 +1,8 @@
 import { BaseDeltaChat, RPC, yerpc } from "@deltachat/jsonrpc-client";
-import * as bindings from "./bindings.js";
+import * as bindings from "./bindings.cjs";
 
 /** it's not recommended to use these functions directly yet */
-export * as low_level from "./bindings.js";
+export * as low_level from "./bindings.cjs";
 export * from "@deltachat/jsonrpc-client";
 
 class NapiTransport extends yerpc.BaseTransport {

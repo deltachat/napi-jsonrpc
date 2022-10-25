@@ -1,7 +1,7 @@
 import test from "ava";
 import { tmpdir } from "os";
 import { join } from "path";
-import { openDeltaChatInstance } from "../index.mjs";
+import { openDeltaChatInstance } from "../index.js";
 
 function testDir(prefix = "") {
   return join(tmpdir(), prefix + `dc-test${Math.random()}-${Date.now()}`);

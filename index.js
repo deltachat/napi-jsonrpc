@@ -8,8 +8,8 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 import { BaseDeltaChat, yerpc } from "@deltachat/jsonrpc-client";
-import * as bindings from "./bindings.js";
-import * as low_level_1 from "./bindings.js";
+import * as bindings from "./bindings.cjs";
+import * as low_level_1 from "./bindings.cjs";
 export { low_level_1 as low_level };
 export * from "@deltachat/jsonrpc-client";
 class NapiTransport extends yerpc.BaseTransport {

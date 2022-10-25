@@ -7,5 +7,7 @@
     "module": "ES6",
     "target": "ES6",
     "allowSyntheticDefaultImports": true,
+    "declaration": false,
   },
+  "include": ["*.ts", "examples/*.ts","__test__/*.ts", "*.cts", "*.mts"],
 }

@@ -3,7 +3,7 @@ import test from "ava";
 import { tmpdir } from "os";
 import { join } from "path";
 
-import * as low_level from "../bindings.js";
+import low_level from "../bindings.cjs";
 
 function testDir(prefix = "") {
   return join(tmpdir(), prefix + `dc-test${Math.random()}-${Date.now()}`);

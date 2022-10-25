@@ -1,4 +1,4 @@
-import { openDeltaChatInstance, T, C } from "../index.mjs";
+import { openDeltaChatInstance, T, C } from "../index";
 
 import type { BaseDeltaChat } from "@deltachat/jsonrpc-client";
 

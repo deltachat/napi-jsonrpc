@@ -196,7 +196,7 @@ Cargo.lock
 
 *.node
 
-__test__/*.mjs
-examples/*.mjs
+__test__/*.js
+examples/*.js
 
 test-deltachat-tmp
