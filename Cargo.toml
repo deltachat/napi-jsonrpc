@@ -7,8 +7,8 @@ version = "0.0.0"
 crate-type = ["cdylib"]
 
 [dependencies]
-deltachat-jsonrpc = { git = "https://github.com/deltachat/deltachat-core-rust/", version = "1.97.0" }
-deltachat = { git = "https://github.com/deltachat/deltachat-core-rust/", version = "1.97.0" }
+deltachat-jsonrpc = { git = "https://github.com/deltachat/deltachat-core-rust/", version = "1.98.0" }
+deltachat = { git = "https://github.com/deltachat/deltachat-core-rust/", version = "1.98.0" }
 # Default enable napi4 feature, see https://nodejs.org/api/n-api.html#node-api-version-matrix
 napi = { version = "2.10.0", default-features = false, features = [
     "napi4",

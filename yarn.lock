@@ -5,14 +5,14 @@ __metadata:
   version: 6
   cacheKey: 8
 
-"@deltachat/jsonrpc-client@npm:1.97.0":
-  version: 1.97.0
-  resolution: "@deltachat/jsonrpc-client@npm:1.97.0"
+"@deltachat/jsonrpc-client@npm:1.98.0":
+  version: 1.98.0
+  resolution: "@deltachat/jsonrpc-client@npm:1.98.0"
   dependencies:
     isomorphic-ws: ^4.0.1
     tiny-emitter: "git+https://github.com/Simon-Laux/tiny-emitter.git"
     yerpc: ^0.3.3
-  checksum: e3c86e2edfdc8d9d67b7b45377d38e296a141e991679725f8d3e7c8e10a559421f6e9fb5cc489a536e5159d551a4bdf0ee204f7ececbceea9f5440f234dfab34
+  checksum: ba327cfd3853316ad0dd04212a85e58c9d5131198a08e9d302e529127acd77a6302b1da41588c62921da3b9fffcfc29979729902250da95215fdce5517364f6a
   languageName: node
   linkType: hard
 
@@ -20,7 +20,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@deltachat/napi-jsonrpc@workspace:."
   dependencies:
-    "@deltachat/jsonrpc-client": 1.97.0
+    "@deltachat/jsonrpc-client": 1.98.0
     "@napi-rs/cli": ^2.12.0
     ava: ^4.3.3
     npm-run-all: ^4.1.5

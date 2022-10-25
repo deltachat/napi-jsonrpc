@@ -36,11 +36,11 @@
     "prepublishOnly": "napi prepublish -t npm",
     "test": "ava",
     "version": "napi version",
-    "example": "run-s build example:run",
+    "example": "run-s build build:ts example:run",
     "example:run": "node examples/echo-bot.mjs"
   },
   "packageManager": "yarn@3.2.4",
   "dependencies": {
-    "@deltachat/jsonrpc-client": "1.97.0"
+    "@deltachat/jsonrpc-client": "1.98.0"
   }
 }

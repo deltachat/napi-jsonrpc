@@ -1,4 +1,4 @@
-import { openDeltaChatInstance, T } from "../index.mjs";
+import { openDeltaChatInstance, T, C } from "../index.mjs";
 
 import type { BaseDeltaChat } from "@deltachat/jsonrpc-client";
 
@@ -61,7 +61,7 @@ async function main() {
   emitter.on("IncomingMsg", async ({ chatId, msgId }) => {
     const chat = await dc.rpc.getBasicChatInfo(botAccountId, chatId);
     // only echo to DM chat
-    if (chat.chatType === 100 /* DC_CHAT_TYPE_SINGLE = 100 */) {
+    if (chat.chatType === C.DC_CHAT_TYPE_SINGLE) {
       const message = await dc.rpc.messageGetMessage(botAccountId, msgId);
       await dc.rpc.miscSendTextMessage(
         botAccountId,
