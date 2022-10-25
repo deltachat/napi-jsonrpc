@@ -258,6 +258,7 @@ jobs:
   publish:
     name: Publish
     runs-on: ubuntu-latest
+    environment: publish
     needs:
       - test-macOS-windows-binding
       - test-linux-x64-gnu-binding
