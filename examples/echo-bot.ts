@@ -62,11 +62,11 @@ async function main() {
     const chat = await dc.rpc.getBasicChatInfo(botAccountId, chatId);
     // only echo to DM chat
     if (chat.chatType === C.DC_CHAT_TYPE_SINGLE) {
-      const message = await dc.rpc.messageGetMessage(botAccountId, msgId);
+      const message = await dc.rpc.getMessage(botAccountId, msgId);
       await dc.rpc.miscSendTextMessage(
         botAccountId,
-        message.text || "",
-        chatId
+        chatId,
+        message.text || ""
       );
     }
   });
