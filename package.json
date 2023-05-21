@@ -1,6 +1,6 @@
 {
   "name": "@deltachat/napi-jsonrpc",
-  "version": "0.101.1",
+  "version": "0.115.0",
   "main": "index.js",
   "types": "index.ts",
   "type": "module",
