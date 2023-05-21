@@ -35,7 +35,7 @@
     "build:debug": "napi build --platform --js bindings.cjs --dts bindings.d.cts",
     "build:ts": "tsc",
     "prepublishOnly": "napi prepublish -t npm",
-    "test": "ava",
+    "test": "ava --no-worker-threads",
     "version": "napi version",
     "example": "run-s build build:ts example:run",
     "example:run": "node examples/echo-bot.mjs"
