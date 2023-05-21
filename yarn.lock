@@ -21,7 +21,7 @@ __metadata:
   resolution: "@deltachat/napi-jsonrpc@workspace:."
   dependencies:
     "@deltachat/jsonrpc-client": 1.115.0
-    "@napi-rs/cli": ^2.12.0
+    "@napi-rs/cli": ^2.15.2
     ava: ^4.3.3
     npm-run-all: ^4.1.5
     typescript: ^4.8.4
@@ -42,12 +42,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@napi-rs/cli@npm:^2.12.0":
-  version: 2.12.1
-  resolution: "@napi-rs/cli@npm:2.12.1"
+"@napi-rs/cli@npm:^2.15.2":
+  version: 2.15.2
+  resolution: "@napi-rs/cli@npm:2.15.2"
   bin:
     napi: scripts/index.js
-  checksum: 4621986d9bc8bbb28725bc4b5384cb17bb51f203295dee337dc33d593a32e70a9b8a0d94256c0657ede8ff440ca7faf430dd28f974bff1ce777a8c4b9162eefa
+  checksum: dedcbd339f634e4a4c442febbfaee7c0fd907f3b8082c1f3ddba18b0e02ae2f0e4bff75688763669db5fb1a0f5ab26a7200cb6c01fe8825effd0a70a44bcbbc7
   languageName: node
   linkType: hard
 
