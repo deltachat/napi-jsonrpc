@@ -4,6 +4,7 @@ use async_channel::Receiver;
 use deltachat::accounts::Accounts;
 use deltachat_jsonrpc::yerpc::{RpcClient, RpcSession};
 use deltachat_jsonrpc::{api::CommandApi, yerpc::Message};
+use napi::bindgen_prelude::block_on;
 
 use std::sync::Arc;
 use tokio::sync::RwLock;
@@ -70,5 +71,16 @@ impl AccountManager {
   #[napi]
   pub async fn get_account_ids(&self) -> napi::Result<Vec<u32>> {
     Ok(self.accounts.read().await.get_all())
+  }
+}
+
+impl Drop for AccountManager {
+  fn drop(&mut self) {
+    let accounts_clone = self.accounts.clone();
+    block_on(async move {
+      let accounts = accounts_clone.write().await;
+      accounts.stop_io().await;
+    });
+    self.jsonrpc_recv.close();
   }
 }
