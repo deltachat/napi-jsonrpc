@@ -2,13 +2,8 @@
 
 use async_channel::Receiver;
 use deltachat::accounts::Accounts;
-use deltachat_jsonrpc::events::event_to_json_rpc_notification;
 use deltachat_jsonrpc::yerpc::{RpcClient, RpcSession};
 use deltachat_jsonrpc::{api::CommandApi, yerpc::Message};
-use napi::bindgen_prelude::*;
-use once_cell::sync::Lazy;
-use tokio::runtime::Runtime;
-use tokio::task::JoinHandle;
 
 use std::sync::Arc;
 use tokio::sync::RwLock;
@@ -16,14 +11,11 @@ use tokio::sync::RwLock;
 #[macro_use]
 extern crate napi_derive;
 
-static RT: Lazy<Runtime> = Lazy::new(|| Runtime::new().expect("unable to create tokio runtime"));
-
 #[napi]
 pub struct AccountManager {
   accounts: Arc<RwLock<Accounts>>,
   jsonrpc: RpcSession<CommandApi>,
   jsonrpc_recv: Receiver<Message>,
-  event_task: JoinHandle<()>,
 }
 
 #[napi]
@@ -37,29 +29,12 @@ impl AccountManager {
         let accounts2 = accounts.clone();
         let cmd_api = CommandApi::from_arc(accounts);
         let (request_handle, receiver) = RpcClient::new();
-        let request_handle2 = request_handle.clone();
         let jsonrpc = RpcSession::new(request_handle, cmd_api);
-
-        let events = { accounts2.read().await.get_event_emitter() };
-        let event_task = RT.spawn({
-          async move {
-            while let Some(event) = events.recv().await {
-              let event = event_to_json_rpc_notification(event);
-              if let Err(err) = request_handle2
-                .send_notification("event", Some(event))
-                .await
-              {
-                eprintln!("Failed to process event {}", err);
-              }
-            }
-          }
-        });
 
         Ok(AccountManager {
           accounts: accounts2,
           jsonrpc,
           jsonrpc_recv: receiver,
-          event_task,
         })
       }
       Err(err) => Err(napi::Error::new(napi::Status::Unknown, err.to_string())),
@@ -67,17 +42,17 @@ impl AccountManager {
   }
 
   #[napi]
-  pub async fn stop_io(&self) -> () {
+  pub async fn stop_io(&self) {
     self.accounts.write().await.stop_io().await;
   }
 
   #[napi]
-  pub async fn start_io(&self) -> () {
+  pub async fn start_io(&self) {
     self.accounts.write().await.start_io().await;
   }
 
   #[napi]
-  pub async fn jsonrpc_request(&self, request: String) -> () {
+  pub async fn jsonrpc_request(&self, request: String) {
     self.jsonrpc.handle_incoming(&request).await
   }
 
@@ -95,11 +70,5 @@ impl AccountManager {
   #[napi]
   pub async fn get_account_ids(&self) -> napi::Result<Vec<u32>> {
     Ok(self.accounts.read().await.get_all())
-  }
-}
-
-impl Drop for AccountManager {
-  fn drop(&mut self) {
-    self.event_task.abort();
   }
 }

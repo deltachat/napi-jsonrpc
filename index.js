@@ -34,7 +34,7 @@ export class JsonRpcClient extends BaseDeltaChat {
         /** todo: shutdown? */
     }
     constructor(accountManager) {
-        super(new NapiTransport(accountManager));
+        super(new NapiTransport(accountManager), true);
     }
 }
 export function openDeltaChatInstance(dir) {

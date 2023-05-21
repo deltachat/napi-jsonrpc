@@ -27,7 +27,7 @@ export class JsonRpcClient extends BaseDeltaChat<NapiTransport> {
     /** todo: shutdown? */
   }
   constructor(accountManager: bindings.AccountManager) {
-    super(new NapiTransport(accountManager));
+    super(new NapiTransport(accountManager), true);
   }
 }
 
