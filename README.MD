@@ -43,6 +43,7 @@ async function main() {
     await dc.rpc.batchSetConfig(firstAccount.id, {
       addr: process.env.ADDR,
       mail_pw: process.env.MAIL_PW,
+      bot: "1",
     });
     await dc.rpc.configure(firstAccount.id);
   }
