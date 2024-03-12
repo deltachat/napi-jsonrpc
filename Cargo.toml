@@ -7,16 +7,16 @@ version = "0.0.0"
 crate-type = ["cdylib"]
 
 [dependencies]
-deltachat-jsonrpc = { git = "https://github.com/deltachat/deltachat-core-rust/", version = "1.115.0" }
-deltachat = { git = "https://github.com/deltachat/deltachat-core-rust/", version = "1.115.0" }
+deltachat-jsonrpc = { git = "https://github.com/deltachat/deltachat-core-rust/", version = "1.136.4" }
+deltachat = { git = "https://github.com/deltachat/deltachat-core-rust/", version = "1.136.4" }
 # Default enable napi4 feature, see https://nodejs.org/api/n-api.html#node-api-version-matrix
-napi = { version = "2.10.0", default-features = false, features = [
+napi = { version = "2.16.0", default-features = false, features = [
     "napi4",
     "tokio_rt",
     "serde-json",
     "error_anyhow"
 ] }
-napi-derive = "2.9.1"
+napi-derive = "2.16.0"
 tokio = { version = "1" }
 async-channel = "1.7.1"
 anyhow = "1.0.65"
@@ -26,7 +26,7 @@ serde_json = "1.0.86"
 
 
 [build-dependencies]
-napi-build = "2.0.1"
+napi-build = "2.1.1"
 
 [profile.release]
 lto = true

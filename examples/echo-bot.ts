@@ -19,7 +19,7 @@ async function main() {
   if (!firstAccount) {
     firstAccount = await dc.rpc.getAccountInfo(await dc.rpc.addAccount());
   }
-  if (firstAccount.type === "Unconfigured") {
+  if (firstAccount.kind === "Unconfigured") {
     console.info("account not configured, trying to login now...");
     try {
       if (!!process.env.ADDR && !!process.env.MAIL_PW) {
@@ -30,7 +30,7 @@ async function main() {
       } else if (!!process.env.DCC_NEW_TMP_EMAIL) {
         const uri = "DCACCOUNT:" + process.env.DCC_NEW_TMP_EMAIL;
         const qr = await dc.rpc.checkQr(firstAccount.id, uri);
-        if (qr.type !== "account") {
+        if (qr.kind !== "account") {
           throw new Error(
             "DCC_NEW_TMP_EMAIL does not contain an account creation uri"
           );

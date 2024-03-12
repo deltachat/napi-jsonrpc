@@ -1,6 +1,6 @@
 {
   "name": "@deltachat/napi-jsonrpc-win32-ia32-msvc",
-  "version": "0.115.0",
+  "version": "0.136.4",
   "os": [
     "win32"
   ],

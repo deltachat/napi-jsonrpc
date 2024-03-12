@@ -1,6 +1,6 @@
 {
   "name": "@deltachat/napi-jsonrpc-darwin-x64",
-  "version": "0.115.0",
+  "version": "0.136.4",
   "os": [
     "darwin"
   ],

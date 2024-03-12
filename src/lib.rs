@@ -23,7 +23,7 @@ impl AccountManager {
   /// Loads or creates an accounts folder at the given `dir`.
   #[napi]
   pub async fn new(dir: String) -> napi::Result<AccountManager> {
-    match Accounts::new(dir.into()).await {
+    match Accounts::new(dir.into(), true).await {
       Ok(manager) => {
         let accounts = Arc::new(RwLock::new(manager));
         let accounts2 = accounts.clone();
