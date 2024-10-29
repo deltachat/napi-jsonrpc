@@ -1,3 +1,5 @@
+> not maintained use https://github.com/deltachat/deltachat-core-rust/tree/main/deltachat-rpc-server/npm-package instead
+
 # Deltachat jsonrpc-napi bindings
 
 Allows you to use Deltachat core from nodejs. You can use this library to create Bots and Clients for deltachat.
